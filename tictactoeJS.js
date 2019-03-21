@@ -63,11 +63,8 @@ function newGame(){
 
 	//clearing the board
 	//for each row
-	for(var x = 0; x < 3; x++){
-		//for each column
-		for(var y = 0; y < 3; y++){
-			document.getElementById(x + '_' + y).value = ' ';
-		}
+	for(var x = 0; x < 9; x++){
+			document.getElementById(x).value = ' ';
 	}
 }
 
@@ -196,7 +193,9 @@ function winning(board, player){
 //the artificial intelligent function that takes in a board in its original
 //state and the player whose turn it is
 function minimax(newBoard, player){
+	//this is an array that holds the empty boxes on the board
 	var availableBlocks = emptyBoxes(newBoard);
+
 	//an array of moves
 	var moves = [];
 
@@ -257,6 +256,18 @@ function minimax(newBoard, player){
 	return moves[bestMove];
 }
 
+//a function that converts the board into an array
+function convert(){
+	var board[];
+
+	for(var i = 0; i < 9; i++){
+		var box = document.getElementById().value;
+		board.push(box);
+	}
+
+	
+
+}
 
 // function int tictactoe(button){
 
