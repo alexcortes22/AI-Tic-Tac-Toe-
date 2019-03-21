@@ -1,0 +1,43 @@
+#video-container {
+  width: 200px;
+  background: white;
+  -webkit-box-shadow: 0 1px 10px #D9D9D9;
+  -moz-box-shadow: 0 1px 10px #D9D9D9;
+  -ms-box-shadow: 0 1px 10px #D9D9D9;
+  -o-box-shadow: 0 1px 10px #D9D9D9;
+  box-shadow: 0 1px 10px #D9D9D9;
+}
+
+#robotPic{
+	width: 200px;
+	height: 200px;
+}
+
+#title{
+	font-size: 15px;
+}
+body{
+	background-image: url("backgroundImage.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	width: 800px;
+	height: 600px;
+	margin: auto;
+	margin-top: 20px;
+
+}
+table{
+	background-color: black;
+	border-style: groove;
+	width: 800px;
+	color: green;
+}
+
+td{
+	text-align: center;
+	font-family: 'Advent Pro';
+	font-size: 25px; 
+	width: 300px;
+	padding: 20px;
+}

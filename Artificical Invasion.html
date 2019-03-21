@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head> 
+	<title>Artificial Invasion</title>
+	<!--Downloading Google fonts--> 
+	<link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+
+	<!-- Sets up design for website-->
+	<link rel="stylesheet" href="styles.css">
+
+	<!--This script broadcasts live camera feed to website-->
+	<script src = "tictactoeJS.js"></script>
+</head>
+
+<body>
+	<table id = "layout">
+		<tr>
+			<td>
+
+			</td>
+			<td id = "title">
+				<h1>Artifical Invasion</h1>
+				<h2>Tic Tac Toe</h2>
+			</td>
+			<td>
+				<p>4</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p> Robot </p>
+				<img src = "robot3.png" id = "robotPic"/>
+			</td>
+			<td>
+				<input type = "button" id = "0_0" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "1_0" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "2_0" value = " " onclick = "squareClicked(this)">
+				<br>
+				<input type = "button" id = "0_1" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "1_1" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "2_1" value = " " onclick = "squareClicked(this)">
+				<br>
+				<input type = "button" id = "0_2" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "1_2" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "2_2" value = " " onclick = "squareClicked(this)">
+				<br>
+			</td>
+			<td>
+				<p> You </p>
+				<div id="video-container">
+					<video id = "camera-stream" autoplay="true"></video>
+				</div>
+			</td>
+		<tr>
+			<td>
+				<p> New Game </p>
+				<input type = "button" id = "New Game" value = "New Game" onclick = "newGame(this)"> 
+			</td>
+			<td>
+				<p id = "status"> Your Turn </p>
+			</td>	
+			<td>
+				<p> PC </p>
+				<input type = "button" id = "pcGame" value = "PC" onclick = "tictactoe(this)"> 
+				<br>
+				<p> Person </p> 
+				<input type = "button" id = "personGame" value = "Person" onclick = "tictactoe(this)"> 
+			</td>
+		</tr>	
+	
+	
+	</table>
+
+	
+</body>
