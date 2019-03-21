@@ -101,71 +101,30 @@ function squareClicked(square){
 	}	
 }
 
+//function that checks whether someone has one or not.
 function checkWin(){
 	var status = document.getElementById('status');
 
-	var val0;
-	var val1;
-	var val2;
+	// var val0;
+	// var val1;
+	// var val2;
 
-	//check columns
-	for(var y = 0; y < 3; y++){
-		val0 = document.getElementById('0_' + y).value;
-		val1 = document.getElementById('1_' + y).value;
-		val2 = document.getElementById('2_' + y).value;
+	//get the array representation of the board
+	var board = convert();
 
-		if(val0 == 'X' && val1 == 'X' && val2 == 'X'){
-			status.innerHTML = "X Wins!";
-			return true;
-		}else if (val0 == 'O' && val1 == 'O' && val2 == 'O'){
-			status.innerHTML = "O Wins!";
-			return true;
-		}
-	}
+	var humanWinner = winning(board, humanPlayer);
+	var opponentWinner = winning(board, aiPlayer);
 
-	//check rows
-	for(var x = 0; x < 3; x++){
-		val0 = document.getElementById(x + '_0').value;
-		val1 = document.getElementById(x + '_1').value;
-		val2 = document.getElementById(x + '_2').value;
-
-		if(val0 == 'X' && val1 == 'X' && val2 == 'X'){
-			status.innerHTML = "X Wins!";
-			return true;
-		}else if (val0 == 'O' && val1 == 'O' && val2 == 'O'){
-			status.innerHTML = "O Wins!";
-			return true;
-		}
-	}
-
-	//check diagonals
-	val0 = document.getElementById('0_0').value;
-	val1 = document.getElementById('1_1').value;
-	val2 = document.getElementById('2_2').value;
-
-	if(val0 == 'X' && val1 == 'X' && val2 == 'X'){
+	//if X wins
+	if(humanWinner){
 		status.innerHTML = "X Wins!";
 		return true;
-	}else if (val0 == 'O' && val1 == 'O' && val2 == 'O'){
+	//if O wins
+	}else if(opponentWinner){
 		status.innerHTML = "O Wins!";
 		return true;
-	}
-
-	//check diagonals
-	val0 = document.getElementById('2_0').value;
-	val1 = document.getElementById('1_1').value;
-	val2 = document.getElementById('0_2').value;
-
-	if(val0 == 'X' && val1 == 'X' && val2 == 'X'){
-		status.innerHTML = "X Wins!";
-		return true;
-	}else if (val0 == 'O' && val1 == 'O' && val2 == 'O'){
-		status.innerHTML = "O Wins!";
-		return true;
-	}
-
-	//no winner yet
-	return false;
+	}else
+		return false;
 }
 
 //a function that returns an array with the boxes that are empty
@@ -258,12 +217,21 @@ function minimax(newBoard, player){
 
 //a function that converts the board into an array
 function convert(){
-	var board[];
+	var board = [];
 
 	for(var i = 0; i < 9; i++){
-		var box = document.getElementById().value;
-		board.push(box);
+
+		var box = document.getElementById(i).value;
+
+		if(box == " "){
+			board.push(i);
+		}else{
+			board.push(box);
+		}
+		
 	}
+
+	return board;
 
 	
 
