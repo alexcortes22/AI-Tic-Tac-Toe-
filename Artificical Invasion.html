@@ -21,7 +21,7 @@
 			</td>
 			<td id = "title">
 				<h1>Artifical Invasion</h1>
-				<h2>Tic Tac Toe</h2>
+				<h2 id = "type">Tic Tac Toe</h2>
 			</td>
 			<td>
 				<p>4</p>
@@ -55,17 +55,17 @@
 		<tr>
 			<td>
 				<p> New Game </p>
-				<input type = "button" id = "New Game" value = "New Game" onclick = "newGame(this)"> 
+				<input type = "button" id = "New Game" value = "New Game" onclick = "newGame()"> 
 			</td>
 			<td>
 				<p id = "status"> Your Turn </p>
 			</td>	
 			<td>
 				<p> PC </p>
-				<input type = "button" id = "pcGame" value = "PC" onclick = "tictactoe(this)"> 
+				<input type = "button" id = "pcGame" value = "PC" onclick = "artificialGame()"> 
 				<br>
 				<p> Person </p> 
-				<input type = "button" id = "personGame" value = "Person" onclick = "tictactoe(this)"> 
+				<input type = "button" id = "personGame" value = "Person" onclick = "humanGame(this)"> 
 			</td>
 		</tr>	
 	

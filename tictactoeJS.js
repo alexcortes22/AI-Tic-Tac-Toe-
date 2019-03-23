@@ -105,10 +105,6 @@ function squareClicked(square){
 function checkWin(){
 	var status = document.getElementById('status');
 
-	// var val0;
-	// var val1;
-	// var val2;
-
 	//get the array representation of the board
 	var board = convert();
 
@@ -232,11 +228,27 @@ function convert(){
 	}
 
 	return board;
+}
 
-	
+//starting an AI Game
+function artificialGame(){
+	var table = document.getElementById("layout");
+	table.style.backgroundColor = "rgba(153, 0, 153, .40)";
+	table.style.color = "white";
+	var gameType = document.getElementById("type");
+	type.innerHTML = "Artificial Tic Tac Toe";
+
+	newGame();
 
 }
 
-// function int tictactoe(button){
+//Starting a human vs human game
+function humanGame(){
+	var table = document.getElementById("layout");
+	table.style.backgroundColor = "black";
+	table.style.color = "green";
+	var gameType = document.getElementById("type");
+	type.innerHTML = "Human Tic Tac Toe";
 
-// }
+	newGame();
+}

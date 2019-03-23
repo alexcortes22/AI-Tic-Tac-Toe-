@@ -41,3 +41,8 @@ td{
 	width: 300px;
 	padding: 20px;
 }
+
+button {
+	border-radius: 100px;
+	font-size: 64px;
+}
