@@ -44,6 +44,9 @@ window.onload = function() {
 var humanPlayer = "X";
 var aiPlayer = "O";
 
+//variable that tells program whether or not its an ai game.
+var aiGame = false;
+
 //a variable that tells the program that it is X's turn
 var turn = true;
 
@@ -76,32 +79,63 @@ function squareClicked(square){
 	}
 	var status = document.getElementById('status');
 	var value = square.value;
-	if(value != 'X' && value != 'O'){
-		if(turn){
-			numMoves++;
-			square.value = 'X';
-			turn = false;
-			status.innerHTML = "O\'s turn";
-		}else{
-			numMoves++;
-			square.value = 'O';
-			turn = true;
-			status.innerHTML = "X\'s turn"
+	
+
+	//if the game is artificial
+	if(aiGame){
+		if(value != 'X' && value != 'O'){	
+			square.value = 'X';	
+			var board = convert();	
+			//get the artificial intelligence's next move
+			var index = minimax(board, aiPlayer).index;
+			//play that move on the board
+			document.getElementById(index).value = aiPlayer;
+			status.innerHTML = "X\'s turn";
+			numMoves = numMoves + 2;
 		}
+		else{
+			alert('That square has already been played.');
+			numMoves--;
+		}
+
+		var winner = checkWin();
+		if(numMoves == 9){
+			if(!winner)
+				status.innerHTMl = 'Tie Game';
+			gameOver = true;
+		}	
+	//else if its human vs human
 	}else{
-		alert('That square has already been played.');
-		numMoves--;
+		if(value != 'X' && value != 'O'){
+			if(turn){
+				numMoves++;
+				square.value = 'X';
+				turn = false;
+				status.innerHTML = "O\'s turn";
+			}else{
+				numMoves++;
+				square.value = 'O';
+				turn = true;
+				status.innerHTML = "X\'s turn";
+		}
+		}else{
+			alert('That square has already been played.');
+			numMoves--;
+		}
+
+		var winner = checkWin();
+		if(numMoves == 9){
+			if(!winner)
+				status.innerHTMl = 'Tie Game';
+			gameOver = true;
+		}	
+
 	}
 
-	var winner = checkWin();
-	if(numMoves == 9){
-		if(!winner)
-			status.innerHTMl = 'Tie Game';
-		gameOver = true;
-	}	
+	
 }
 
-//function that checks whether someone has one or not.
+//function that checks whether someone has won or not.
 function checkWin(){
 	var status = document.getElementById('status');
 
@@ -217,12 +251,12 @@ function convert(){
 
 	for(var i = 0; i < 9; i++){
 
-		var box = document.getElementById(i).value;
+		var button = document.getElementById(i).value;
 
-		if(box == " "){
+		if(button == " "){
 			board.push(i);
 		}else{
-			board.push(box);
+			board.push(button);
 		}
 		
 	}
@@ -240,6 +274,8 @@ function artificialGame(){
 
 	newGame();
 
+	aiGame = true;
+
 }
 
 //Starting a human vs human game
@@ -251,4 +287,6 @@ function humanGame(){
 	type.innerHTML = "Human Tic Tac Toe";
 
 	newGame();
+
+	aiGame = false;
 }
