@@ -29,28 +29,26 @@
 		</tr>
 		<tr>
 			<td>
-				<p> Robot </p>
-				<img src = "robot3.png" id = "robotPic"/>
+				<p id = "opponentName"> Opponent </p>
+				<img src = "student.png" id = "opponentPic"/>
 			</td>
 			<td>
-				<input type = "button" id = "0" value = " " onclick = "squareClicked(this)">
-				<input type = "button" id = "1" value = " " onclick = "squareClicked(this)">
-				<input type = "button" id = "2" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "0" value = " " class = "board" onclick = "squareClicked(this)">
+				<input type = "button" id = "1" value = " " class = "board" onclick = "squareClicked(this)">
+				<input type = "button" id = "2" value = " " class = "board" onclick = "squareClicked(this)">
 				<br>
-				<input type = "button" id = "3" value = " " onclick = "squareClicked(this)">
-				<input type = "button" id = "4" value = " " onclick = "squareClicked(this)">
-				<input type = "button" id = "5" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "3" value = " " class = "board" onclick = "squareClicked(this)">
+				<input type = "button" id = "4" value = " " class = "board" onclick = "squareClicked(this)">
+				<input type = "button" id = "5" value = " " class = "board" onclick = "squareClicked(this)">
 				<br>
-				<input type = "button" id = "6" value = " " onclick = "squareClicked(this)">
-				<input type = "button" id = "7" value = " " onclick = "squareClicked(this)">
-				<input type = "button" id = "8" value = " " onclick = "squareClicked(this)">
+				<input type = "button" id = "6" value = " " class = "board" onclick = "squareClicked(this)">
+				<input type = "button" id = "7" value = " " class = "board" onclick = "squareClicked(this)">
+				<input type = "button" id = "8" value = " " class = "board" onclick = "squareClicked(this)">
 				<br>
 			</td>
 			<td>
 				<p> You </p>
-				<div id="video-container">
-					<video id = "camera-stream" autoplay="true"></video>
-				</div>
+				<img src = "students.png" id = "studentPic"/>
 			</td>
 		<tr>
 			<td>
@@ -61,8 +59,8 @@
 				<p id = "status"> Your Turn </p>
 			</td>	
 			<td>
-				<p> PC </p>
-				<input type = "button" id = "pcGame" value = "PC" onclick = "artificialGame()"> 
+				<p> AI </p>
+				<input type = "button" id = "pcGame" value = "AI" onclick = "artificialGame()"> 
 				<br>
 				<p> Person </p> 
 				<input type = "button" id = "personGame" value = "Person" onclick = "humanGame(this)"> 

@@ -1,45 +1,3 @@
-//function that start live camera feed
-window.onload = function() {
-
-  // Normalize the various vendor prefixed versions of getUserMedia.
-  navigator.getUserMedia = (navigator.getUserMedia ||
-                            navigator.webkitGetUserMedia ||
-                            navigator.mozGetUserMedia || 
-                            navigator.msGetUserMedia);
-
-  if (navigator.getUserMedia) {
-  // Request the camera.
-  navigator.getUserMedia(
-    // Constraints
-    {
-      video: true
-    },
-
-    // Success Callback
-    function(localMediaStream) {
-
-    },
-
-    // Error Callback
-    function(err) {
-      // Log the error to the console.
-      console.log('The following error occurred when trying to use getUserMedia: ' + err);
-    }
-  );
-
-	} else {
-	  alert('Sorry, your browser does not support getUserMedia');
-	}
-
-	// Get a reference to the video element on the page.
-	var vid = document.getElementById('camera-stream');
-
-	// Create an object URL for the video stream and use this 
-	// to set the video source.
-	vid.src = window.URL.createObjectURL(localMediaStream);
-
-	}
-
 //the values for the players
 var humanPlayer = "X";
 var aiPlayer = "O";
@@ -73,13 +31,21 @@ function newGame(){
 
 //write x or o depending on whose turn it is
 function squareClicked(square){
-	if(gameOver){
+	var winner = checkWin();
+
+	//if the game is over or if there is a winner....
+	if(gameOver||winner){
 		alert("The game is already over.");
 		return;
 	}
+
 	var status = document.getElementById('status');
 	var value = square.value;
 	
+	if(numMoves == 9 && winner == false){
+		status.innerHTML = "Tie Game";
+		gameOver = true;
+	}
 
 	//if the game is artificial
 	if(aiGame){
@@ -95,7 +61,6 @@ function squareClicked(square){
 		}
 		else{
 			alert('That square has already been played.');
-			numMoves--;
 		}
 
 		var winner = checkWin();
@@ -120,13 +85,13 @@ function squareClicked(square){
 		}
 		}else{
 			alert('That square has already been played.');
-			numMoves--;
 		}
 
 		var winner = checkWin();
 		if(numMoves == 9){
-			if(!winner)
+			if(!winner){
 				status.innerHTMl = 'Tie Game';
+			}
 			gameOver = true;
 		}	
 
@@ -162,6 +127,7 @@ function emptyBoxes(board){
 	//check the array for any boxes that dont have X or O
 	return board.filter(s => s != "O" && s != "X");
 }
+
 //function that holds all the winning combinations for a tic tac toe game
 function winning(board, player){
 	if(
@@ -248,7 +214,6 @@ function minimax(newBoard, player){
 //a function that converts the board into an array
 function convert(){
 	var board = [];
-
 	for(var i = 0; i < 9; i++){
 
 		var button = document.getElementById(i).value;
@@ -257,10 +222,8 @@ function convert(){
 			board.push(i);
 		}else{
 			board.push(button);
-		}
-		
+		}	
 	}
-
 	return board;
 }
 
@@ -272,10 +235,15 @@ function artificialGame(){
 	var gameType = document.getElementById("type");
 	type.innerHTML = "Artificial Tic Tac Toe";
 
+	var opponentPic = document.getElementById("opponentPic");
+	opponentPic.src = "robot3.png";
+
+	var opponentName = document.getElementById("opponentName");
+	opponentName.innerHTML = "Robot";
+
 	newGame();
 
 	aiGame = true;
-
 }
 
 //Starting a human vs human game
@@ -285,6 +253,12 @@ function humanGame(){
 	table.style.color = "green";
 	var gameType = document.getElementById("type");
 	type.innerHTML = "Human Tic Tac Toe";
+
+	var opponentPic = document.getElementById("opponentPic");
+	opponentPic.src = "student.png";
+
+	var opponentName = document.getElementById("opponentName");
+	opponentName.innerHTML = "Opponent";
 
 	newGame();
 
